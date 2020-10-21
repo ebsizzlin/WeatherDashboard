@@ -1,19 +1,45 @@
-var city = $().val();
-// api key
-// search button
-// queryurl for city and the api key
-// ajax call (via project 1)
-// ajax temp, conditions
-// append into list (via highscore)
-    // temp, humidity, wind speed, uv index
-    // image ?
-// get the weather now, clear it empty() via project 1
-    // how to calculate weather ?
-// addClass the content & append (via project 1)
-// get 5 day forecast
-    // ajax query + api key
-    // for loop for 5 days
-    // probs a math floor but idk how to do one
-    // temp, humidity
-    // image ?
-    // append
+var city = $('#seachBox');
+const apiKey = "&appid=afaa8eea1769b4359fd8e07b2efcefbd";
+
+$('#searchBtn').on('click', function() {
+    //onclick button to show everything
+    $('#forecastsAll').addClass('show');
+
+    city = $('#searchBox').empty().val();
+
+    var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + apiKey;
+
+    $.ajax(    {
+        url: queryURL,
+        method: 'GET'
+    }).then(function(response)  {
+        console.log(response)
+        console.log(response.name)
+        console.log(response.weather[0].icon)
+        //temperature (weather.main.temp)
+        console.log(response.main.humidity)
+        console.log(response.wind.speed)
+        //UV https://api.openweathermap.org/data/2.5/uvi/forecast?&units=imperial&appid=885e9149105e8901c9809ac018ce8658&q="
+            //lat & long, uvIndexDisplay.text(uvIndex[0].value)
+
+        cityList();
+        locationWeather(response);
+        fiveForecasts(response);
+    
+    })
+
+    //function to create list
+    function cityList() {
+        ///// $('#list-group')
+    }
+    
+    //function to show weather for selected city
+    function locationWeather()  {
+        ///// $('#currentCity')
+    }
+          
+    //function to show 5 day forecast for selected city
+    function fiveForecasts()    {
+        ///// $('#forecasts')
+    }
+})
