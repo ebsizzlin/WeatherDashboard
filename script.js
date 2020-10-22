@@ -42,21 +42,39 @@ function locationWeather()  {
     cardItem.addClass('h4');
     $('#currentCity').empty().append(cardItem);
     //date //timezone
-    var timeItem = $('<card-title>').text('timezone')
-    timeItem.addClass('h4');
-    cardItem.append(listItem);
+    var time = $('<h4>').addClass('card-title').text(data.list[i].weather[0].timezone);
+    console.log(time);
+    time.empty().append(cardItem)
     //pic //icon
-    var iconItem = $('<img>').append('icon')
-    iconItem.addClass('img');
+    var img = $("<img>").attr("src", "https://openweathermap.org/img/w/" + data.list[i].weather[0].icon + ".png");
+    console.log(img);
+    img.append(time);
     //temp //temp
+    var temp = $("<p>").addClass('card-text').text("Temperature: " + data.list[i].weather[0].temp + 'F');
+    console.log(temp);
+    temp.append(img);
     //humidity //humidity
-    //wind speed //humidity
+    var humidity = $("<p>").addClass('card-text').text('Humidity: ' + data.list[i].weather[0].humidity + '%');
+    console.log(humidity);
+    humidity.append(temp);
+    //wind speed //speed
+    var wind = $("<p>").addClass('card-text').text("Wind Speed: " + data.list[i].weather[0].speed + "MPH");
+    console.log(wind);
+    wind.append(humidity);
     //uv //notsure
+    var queryURL2 = "http://api.openweathermap.org/data/2.5/uvi?lat={lat}&lon={lon}&appid=" + city + apiKey;
+    $.ajax(    {
+        url: queryURL2,
+        method: 'GET'
+    });
+    var UV = $("<card-text>").attr("src", "https://openweathermap.org/img/w/" + data.list[i].weather[0].uv);
+    console.log(UV);
+    UV.append(wind);
 }
       
 //function to show 5 day forecast for selected city
 function fiveForecasts()    {
-    var forecastItem = $('<row>');
+    var forecastItem = $('<row>').text(city);
     console.log(forecastItem);
     forecastItem.addClass('card col-md-2 ml-4 bg-primary text-white');
     $('#forecasts').empty().append('#forecastsAll');
