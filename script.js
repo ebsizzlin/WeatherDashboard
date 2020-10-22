@@ -37,10 +37,29 @@ function cityList(city) {
 
 //function to show weather for selected city
 function locationWeather()  {
-    ///// $('#currentCity')
+    var cardItem = $('<card-title>').text(city);
+    console.log(cardItem);
+    cardItem.addClass('h4');
+    $('#currentCity').empty().append(cardItem);
+    //date //timezone
+    var timeItem = $('<card-title>').text('timezone')
+    timeItem.addClass('h4');
+    cardItem.append(listItem);
+    //pic //icon
+    var iconItem = $('<img>').append('icon')
+    iconItem.addClass('img');
+    //temp //temp
+    //humidity //humidity
+    //wind speed //humidity
+    //uv //notsure
 }
       
 //function to show 5 day forecast for selected city
 function fiveForecasts()    {
-    ///// $('#forecasts')
+    var forecastItem = $('<row>');
+    console.log(forecastItem);
+    forecastItem.addClass('card col-md-2 ml-4 bg-primary text-white');
+    $('#forecasts').empty().append('#forecastsAll');
 }
+
+//look at bootstrap card in order to figure out the <li> for bootstrap to addClass for 5 forecasts
