@@ -1,1 +1,4 @@
 /* "#forecastsAll" hide before search, show after search */
+#currentCity {
+  border-style: solid;
+}
