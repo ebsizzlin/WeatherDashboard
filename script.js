@@ -62,7 +62,7 @@ function locationWeather()  {
     console.log(wind);
     wind.empty().append(humidity);
     //uv //notsure
-    var queryURL2 = "http://api.openweathermap.org/data/2.5/uvi?lat={lat}&lon={lon}&appid=" + city + apiKey;
+    var queryURL2 = 'http://api.openweathermap.org/data/2.5/uvi?lat=' + {lat} + '&lon=' + {lon} + '&appid=' + city + apiKey;
     $.ajax(    {
         url: queryURL2,
         method: 'GET'
@@ -76,10 +76,25 @@ function locationWeather()  {
       
 //function to show 5 day forecast for selected city
 function fiveForecasts()    {
-    var forecastItem = $('<row>').text(city);
+    var queryURL3 = 'https://api.openweathermap.org/data/2.5/forecast?q=' + city + '&appid=' + apiKey;
+
+    $.ajax(    {
+        url: queryURL3,
+        method: 'GET'
+    }).then(function(response)  {
+
+        cityList(response.name);
+        locationWeather(response);
+        fiveForecasts(response);
+    
+    }).catch(function(error)    {
+        console.log(error);
+    });
+
+    var forecastItem = $('<row>').addClass('card col-md-2 ml-4 bg-primary text-white').text(data.list[i].weather[0].timezone)
     console.log(forecastItem);
-    forecastItem.addClass('card col-md-2 ml-4 bg-primary text-white');
-    $('#forecasts').empty().append('#forecastsAll');
+    forecastItem.empty().append('#forecastsAll');
 }
 
 //look at bootstrap card in order to figure out the <li> for bootstrap to addClass for 5 forecasts
+    //create a row, adding li after or is it automatic through the query ?
