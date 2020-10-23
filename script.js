@@ -6,7 +6,7 @@ $('#searchBtn').on('click', function() {
     //onclick button to show everything
     $('#forecastsAll').addClass('show');
 
-    city = $('#searchBox').empty().val();
+    city = $('#searchBox').empty().val().trim().toUpperCase();
 
     var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + apiKey;
 
@@ -14,7 +14,7 @@ $('#searchBtn').on('click', function() {
         url: queryURL,
         method: 'GET'
     }).then(function(response)  {
-    console.log('response:', response)
+    // console.log('response:', response)
 
         cityList(response.name);
         locationWeather(response);
@@ -38,14 +38,13 @@ function cityList(city) {
 
 //function to show weather for selected city
 function locationWeather(data)  {
-    var cardItem = $('<card-title>').text(city);
+    var cardItem = $('<card-title>').addClass('h4').text(city);
     console.log(cardItem);
-    cardItem.addClass('h4');
     $('#currentCity').empty().append(cardItem);
-    //date //timezone //not timezone
-    // var time = $('<h4>').addClass('card-title').text(data.list[i].weather[0].timezone);
+    //date //uv date
+    // var time = $('<h4>').addClass('card-title').attr(response.date);
     // console.log(time);
-    // time.empty().append(cardItem)
+    // $('#currentCity').append(time);
     //pic //icon
     var img = $("<img>").attr("src", "https://openweathermap.org/img/w/" + data.weather[0].icon + ".png");
     console.log(img);
@@ -63,16 +62,18 @@ function locationWeather(data)  {
     console.log(wind);
     $('#currentCity').append(wind);
 
+    
+    //uv //value
     var lat = data.coord.lat;
     var lon = data.coord.lon;
 
-    //uv //notsure
     var queryURL2 = 'http://api.openweathermap.org/data/2.5/uvi?' + apiKey + '&lat=' + lat + '&lon=' + lon;
+
     $.ajax(    {
         url: queryURL2,
         method: 'GET'
     }).then(function(response) {
-        console.log('response:', response)
+        // console.log('response:', response)
         var UV = $("<button>").addClass("btn btn-danger").text("UV Index: " + response.value);
         $('#currentCity').append(UV);
     });
@@ -80,7 +81,7 @@ function locationWeather(data)  {
       
 //function to show 5 day forecast for selected city
 function fiveForecasts()    {
-    var queryURL3 = 'https://api.openweathermap.org/data/2.5/forecast?q=' + city + '&appid=' + apiKey;
+    var queryURL3 = 'https://api.openweathermap.org/data/2.5/forecast?q=' + city + apiKey;
 
     $.ajax(    {
         url: queryURL3,
@@ -92,9 +93,10 @@ function fiveForecasts()    {
     for(var i = 0; i < response.length; i++)    {
         var forecastItem = $('<row>').addClass('card col-md-2 ml-4 bg-primary text-white').text(data.list[i].weather[0].timezone)
         console.log(forecastItem);
-        forecastItem.append('#forecastsAll');
+        $('#forecasts').append(forecastItem);
     }
-}
+    });
+};
 
 //look at bootstrap card in order to figure out the <li> for bootstrap to addClass for 5 forecasts
-    //create a row, adding li after or is it automatic through the query ?
+    //create a row, adding li after or is it automatic through the query?

@@ -1,4 +1,35 @@
-/* "#forecastsAll" hide before search, show after search */
+body {
+  font-family: "Open Sans", sans-serif;
+}
+
+.heading {
+  background-color: #3c3c3c;
+  color: #ffffff;
+  text-align: center;
+  padding: 10px;
+}
+
 #currentCity {
-  border-style: solid;
+  padding: 20px;
+}
+
+h4 {
+  margin: 20px;
+}
+
+#forecasts {
+  display: flex;
+  flex-direction: row;
+}
+
+.forecast {
+  margin: 20px;
+}
+
+.hide {
+  display: none;
+}
+
+.show {
+  display: contents;
 }
