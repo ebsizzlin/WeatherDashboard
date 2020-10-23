@@ -21,16 +21,15 @@ SO THAT I can plan a trip accordingly
 - forecastsAll hide & show onclick
 - 5 day forecast API response in network (though not yet displayed properly)
 - for loop attempt
+- button color change attempt
 
 # Future Fixes
 
-- add date
 - temperature # doesn't make sense
 - how to change button color depending on favorable, moderate, severe (if statements for green yellow red?)
 - make locationWeather a card / a nice border
-- figure out the for loop / why 'response' is udnefined
-- change searches to buttons that can be clicked on
-- keep local storage displayed (via work scheduler hw)
+- figure out the for loop / why 'response' is undefined
+- change searches to buttons that can be clicked on & keep them displayed when you reseach (work schedule hw)
 
 # Screenshots
 

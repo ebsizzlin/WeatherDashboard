@@ -79,9 +79,16 @@ function locationWeather(data)  {
         method: 'GET'
     }).then(function(response) {
         // console.log('response:', response)
-        var UV = $("<button>").addClass("btn btn-danger").text("UV Index: " + response.value);
+        var UV = $("<button>").addClass('btn btn-success').text("UV Index: " + response.value);
         $('#currentCity').append(UV);
-        //if ... green //if ... yellow //if ...red
+        //if ... btn btn-success //if ... btn btn-warning //if ... btn btn-danger
+        if (response.value <= 2) {
+            $(this).addClass("btn btn-success");
+          } else if (response.value >= 3 || response.value <= 7) {
+            $(this).addClass("btn btn-warning");
+          } else if (response.value >= 8) {
+            $(this).addClass("btn btn-danger");
+          }
     });
 };
       
