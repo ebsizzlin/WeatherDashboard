@@ -18,7 +18,7 @@ $('#searchBtn').on('click', function() {
 
         cityList(response.name);
         locationWeather(response);
-        // fiveForecasts(response);
+        fiveForecasts(response);
     
     }).catch(function(error)    {
         console.log(error);
@@ -45,23 +45,26 @@ function locationWeather(data)  {
     // var time = $('<h4>').addClass('card-title').attr(response.date);
     // console.log(time);
     // $('#currentCity').append(time);
+
     //pic //icon
     var img = $("<img>").attr("src", "https://openweathermap.org/img/w/" + data.weather[0].icon + ".png");
     console.log(img);
     $('#currentCity').append(img);
+
     //temp //temp
     var temp = $("<p>").addClass('card-text').text("Temperature: " + data.main.temp + 'F');
     console.log(temp, 'temp');
     $('#currentCity').append(temp);
+
     //humidity //humidity
     var humidity = $("<p>").addClass('card-text').text('Humidity: ' + data.main.humidity + '%');
     console.log(humidity, 'humidity');
     $('#currentCity').append(humidity);
+
     //wind speed //speed
     var wind = $("<p>").addClass('card-text').text("Wind Speed: " + data.wind.speed + "MPH");
     console.log(wind);
     $('#currentCity').append(wind);
-
     
     //uv //value
     var lat = data.coord.lat;
@@ -81,7 +84,10 @@ function locationWeather(data)  {
       
 //function to show 5 day forecast for selected city
 function fiveForecasts()    {
-    var queryURL3 = 'https://api.openweathermap.org/data/2.5/forecast?q=' + city + apiKey;
+    var lat = data.coord.lat;
+    var lon = data.coord.lon;
+    
+    var queryURL3 = 'http://api.openweathermap.org/data/2.5/forecast?lat=' + lat + '&lon=' + lon + apiKey;
 
     $.ajax(    {
         url: queryURL3,
