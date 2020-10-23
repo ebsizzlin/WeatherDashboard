@@ -13,10 +13,6 @@ body {
   padding: 20px;
 }
 
-h4 {
-  margin: 20px;
-}
-
 #forecasts {
   display: flex;
   flex-direction: row;

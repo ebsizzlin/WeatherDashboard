@@ -1,6 +1,7 @@
 var city = $('#seachBox');
 const apiKey = "&appid=afaa8eea1769b4359fd8e07b2efcefbd";
 var searchHistory = JSON.parse(window.localStorage.getItem('history')) || [];
+var timeNow = moment().format('M/D/YYYY');
 
 $('#searchBtn').on('click', function() {
     //onclick button to show everything
@@ -42,10 +43,10 @@ function locationWeather(data)  {
     console.log(cardItem);
     $('#currentCity').empty().append(cardItem);
 
-    //date //uv date
-    // var time = $('<h4>').addClass('card-title').attr(response.date);
-    // console.log(time);
-    // $('#currentCity').append(time);
+    //date //date
+    var time = $('<h4>').addClass('card-title').text(timeNow);
+    console.log(time, 'time');
+    $(cardItem).append(time);
 
     //pic //icon
     var img = $("<img>").attr("src", "https://openweathermap.org/img/w/" + data.weather[0].icon + ".png");
@@ -80,6 +81,7 @@ function locationWeather(data)  {
         // console.log('response:', response)
         var UV = $("<button>").addClass("btn btn-danger").text("UV Index: " + response.value);
         $('#currentCity').append(UV);
+        //if ... green //if ... yellow //if ...red
     });
 };
       
@@ -95,11 +97,12 @@ function fiveForecasts()    {
     // forecastItem.empty(response);
     });
 
+    //should i be appending to forecastItem1 instead of #forecasts?
     for(var i = 0; i < response.length; i++)    {
         var forecastItem1 = $('<card>').addClass('card col-md-2 ml-4 bg-primary text-white')
             console.log(forecastItem1);
             $('#forecasts').append(forecastItem1);
-                var day1 = $('<card-title>').addClass('h4').text(list[0].dt_txt);
+                var day1 = $('<card-title>').addClass('h4').text(timeNow.add(1, 'days'));
                 console.log(day1, 'day1');
                 $('#forecasts').append(day1);
                 var icon1 = $("<img>").attr("src", "https://openweathermap.org/img/w/" + list[0].weather.icon + ".png");
