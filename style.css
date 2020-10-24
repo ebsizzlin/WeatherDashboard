@@ -13,6 +13,10 @@ body {
   padding: 20px;
 }
 
+#forecasts {
+  padding-left: 20px;
+}
+
 .hide {
   display: none;
 }

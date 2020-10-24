@@ -118,9 +118,9 @@ function fiveForecasts()    {
                     console.log('response.list[3].dt_txt:', response.list[3].dt_txt)
                     forecastItem1.append(day1);
                 //icon
-                var icon1 = $("#icon1").attr("src", "https://openweathermap.org/img/w/" + response.list[3].weather.icon + ".png");
-                    console.log('response.list[3].weather.icon:', response.list[3].weather.icon)
-                    forecastItem1.append(icon1);
+                var icon1 = $("#icon1").attr("src", "https://openweathermap.org/img/w/" + response.list[3].weather[0].icon + ".png");
+                console.log('response.list[3].weather[0].icon:', response.list[3].weather[0].icon)
+                forecastItem1.append(icon1);
                 //temp
                 var F1 = (response.list[3].main.temp - 273.15) * 1.80 + 32;
                     F1 = Math.floor(F1);
@@ -139,8 +139,8 @@ function fiveForecasts()    {
                     console.log('response.list[11].dt_txt:', response.list[11].dt_txt)
                     forecastItem2.append(day2);
                 //icon
-                var icon2 = $("#icon2").attr("src", "https://openweathermap.org/img/w/" + response.list[11].weather.icon + ".png");
-                    console.log('response.list[11].weather.icon:', response.list[11].weather.icon)
+                var icon2 = $("#icon2").attr("src", "https://openweathermap.org/img/w/" + response.list[11].weather[0].icon + ".png");
+                    console.log('response.list[11].weather[0].icon:', response.list[11].weather[0].icon)
                     forecastItem2.append(icon2);
                 //temp
                 var F2 = (response.list[11].main.temp - 273.15) * 1.80 + 32;
@@ -160,8 +160,8 @@ function fiveForecasts()    {
                     console.log('response.list[19].dt_txt:', response.list[19].dt_txt)
                     forecastItem3.append(day3);
                 //icon
-                var icon3 = $("#icon2").attr("src", "https://openweathermap.org/img/w/" + response.list[19].weather.icon + ".png");
-                    console.log('response.list[19].weather.icon:', response.list[19].weather.icon)
+                var icon3 = $("#icon2").attr("src", "https://openweathermap.org/img/w/" + response.list[19].weather[0].icon + ".png");
+                    console.log('response.list[19].weather[0].icon:', response.list[19].weather[0].icon)
                     forecastItem3.append(icon3);
                 //temp
                 var F3 = (response.list[19].main.temp - 273.15) * 1.80 + 32;
@@ -181,8 +181,8 @@ function fiveForecasts()    {
                     console.log('response.list[27].dt_txt:', response.list[27].dt_txt)
                     forecastItem4.append(day4);
                 //icon
-                var icon4 = $("#icon4").attr("src", "https://openweathermap.org/img/w/" + response.list[27].weather.icon + ".png");
-                    console.log('response.list[27].weather.icon:', response.list[27].weather.icon)
+                var icon4 = $("#icon4").attr("src", "https://openweathermap.org/img/w/" + response.list[27].weather[0].icon + ".png");
+                    console.log('response.list[27].weather[0]:', response.list[27].weather[0])
                     forecastItem4.append(icon4);
                 //temp
                 var F4 = (response.list[27].main.temp - 273.15) * 1.80 + 32;
@@ -202,8 +202,8 @@ function fiveForecasts()    {
                     console.log('response.list[35].dt_txt:', response.list[35].dt_txt)
                     forecastItem5.append(day5);
                 //icon
-                var icon5 = $("#icon5").attr("src", "https://openweathermap.org/img/w/" + response.list[35].weather.icon + ".png");
-                    console.log('response.list[35].weather.icon:', response.list[35].weather.icon)
+                var icon5 = $("#icon5").attr("src", "https://openweathermap.org/img/w/" + response.list[35].weather[0].icon + ".png");
+                    console.log('response.list[35].weather[0].icon:', response.list[35].weather[0].icon)
                     forecastItem5.append(icon5);
                 //temp
                 var F5 = (response.list[35].main.temp - 273.15) * 1.80 + 32;
