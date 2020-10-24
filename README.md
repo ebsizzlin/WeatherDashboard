@@ -27,8 +27,9 @@ SO THAT I can plan a trip accordingly
 
 - moment.js for forecasts
 - temperature # doesn't make sense
-- cant get locationWeather border to show
 - how to change button color depending on favorable, moderate, severe
+- spread 5 forecast cards out even with the current city box
+
 - bonus: change searches to buttons that can be clicked on & keep them displayed when you reseach (work schedule hw?)
 
 # Screenshots

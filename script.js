@@ -40,6 +40,8 @@ function cityList(city) {
 
 //function to show weather for selected city
 function locationWeather(data)  {
+    $('#currentCity').css('border', '1px solid black');
+
     var cardItem = $('<card-title>').addClass('h4').text(city);
     console.log(cardItem);
     $('#currentCity').empty().append(cardItem);
@@ -106,11 +108,9 @@ function fiveForecasts()    {
         console.log('response.list[0](LINE103):', response.list[0])    // forecastItem.empty(response);
         console.log(response, 'response');
 
-    // for(var i = 0; i < response.length; i++)    {
-
         var forecastItem1 = $('#forecast1').addClass("bg-primary text-white");
             console.log(forecastItem1);
-                var day1 = $('#date1').addClass('h4').text(response.list[3].dt_txt);
+                var day1 = $('#date1').addClass('h4').text(response.list[3].dt_txt).html(timeNow);
                 console.log('response.list[3].dt_txt:', response.list[3].dt_txt)
                 forecastItem1.append(day1);
                 var icon1 = $("#icon1").attr("src", "https://openweathermap.org/img/w/" + response.list[3].weather.icon + ".png");
@@ -125,7 +125,7 @@ function fiveForecasts()    {
 
         var forecastItem2 = $('#forecast2').addClass("bg-primary text-white");
             console.log(forecastItem2);
-                var day2 = $('#date2').addClass('h4').text(response.list[11].dt_txt);
+                var day2 = $('#date2').addClass('h4').text(response.list[11].dt_txt).html(timeNow);
                 console.log('response.list[11].dt_txt:', response.list[11].dt_txt)
                 forecastItem2.append(day2);
                 var icon2 = $("#icon2").attr("src", "https://openweathermap.org/img/w/" + response.list[11].weather.icon + ".png");
@@ -140,7 +140,7 @@ function fiveForecasts()    {
 
         var forecastItem3 = $('#forecast3').addClass("bg-primary text-white");
             console.log(forecastItem3);
-                var day3 = $('#date3').addClass('h4').text(response.list[19].dt_txt);
+                var day3 = $('#date3').addClass('h4').text(response.list[19].dt_txt).html(timeNow);
                 console.log('response.list[19].dt_txt:', response.list[19].dt_txt)
                 forecastItem3.append(day3);
                 var icon3 = $("#icon2").attr("src", "https://openweathermap.org/img/w/" + response.list[19].weather.icon + ".png");
@@ -155,7 +155,7 @@ function fiveForecasts()    {
 
         var forecastItem4 = $('#forecast4').addClass("bg-primary text-white");
             console.log(forecastItem4);
-                var day4 = $('#date4').addClass('h4').text(response.list[27].dt_txt);
+                var day4 = $('#date4').addClass('h4').text(response.list[27].dt_txt).html(timeNow);
                 console.log('response.list[27].dt_txt:', response.list[27].dt_txt)
                 forecastItem4.append(day4);
                 var icon4 = $("#icon4").attr("src", "https://openweathermap.org/img/w/" + response.list[27].weather.icon + ".png");
@@ -170,7 +170,7 @@ function fiveForecasts()    {
 
         var forecastItem5 = $('#forecast5').addClass("bg-primary text-white");
             console.log(forecastItem4);
-                var day5 = $('#date5').addClass('h4').text(response.list[35].dt_txt);
+                var day5 = $('#date5').addClass('h4').text(response.list[35].dt_txt).html(timeNow);
                 console.log('response.list[35].dt_txt:', response.list[35].dt_txt)
                 forecastItem5.append(day5);
                 var icon5 = $("#icon5").attr("src", "https://openweathermap.org/img/w/" + response.list[35].weather.icon + ".png");
@@ -182,6 +182,5 @@ function fiveForecasts()    {
                 var humidity5 = $("#humidity5").text('Humidity: ' + response.list[35].main.humidity + '%');
                 console.log('response.list[35].main.humidity:', response.list[35].main.humidity)
                 forecastItem5.append(humidity5);
-        // }
     });
 };
