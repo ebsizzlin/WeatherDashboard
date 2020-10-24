@@ -106,12 +106,8 @@ function fiveForecasts()    {
 
     //should i be appending to forecastItem1 instead of #forecasts?
     // for(var i = 0; i < response.length; i++)    {
-        $(".card").attr(
-            "style",
-            "background-color:dodgerblue; color:white"
-          );
 
-        var forecastItem1 = $('#forecast1');
+        var forecastItem1 = $('#forecast1').addClass("card col-md-2 ml-4, bg-primary text-white");
             console.log(forecastItem1);
                 var day1 = $('#date1').addClass('h4').text(timeNow.response.list[0]);
                 console.log(day1, 'day1');
@@ -125,23 +121,21 @@ function fiveForecasts()    {
                 var humidity1 = $("#humidity1").text('Humidity: ' + response.list[0].main.humidity + '%');
                 console.log(humidity1, 'humidity1');
                 forecastItem1.append(humidity1);
-    // }
 
-    // var forecastItem2 = $('<card>').addClass('card col-md-2 ml-4 bg-primary text-white')
-    //     console.log(forecastItem2);
-    //     $('#forecasts').append(forecastItem2);
-    //         var day2 = $('<card-title>').addClass('h4').text(list[1].dt_txt);
-    //         console.log(day2, 'day2');
-    //         $('#forecasts').append(day2);
-    //         var icon2 = $("<img>").attr("src", "https://openweathermap.org/img/w/" + list[1].weather.icon + ".png");
-    //         console.log(icon2, 'icon2');
-    //         $('#forecasts').append(icon2);
-    //         var temp2 = $("<p>").addClass('card-text').text("Temperature: " + list[1].main.temp + 'F');
-    //         console.log(temp2, 'temp2');
-    //         $('#forecasts').append(temp2);
-    //         var humidity2 = $("<p>").addClass('card-text').text('Humidity: ' + list[1].main.humidity + '%');
-    //         console.log(humidity2, 'humidity2');
-    //         $('#forecasts').append(humidity2);
+        var forecastItem2 = $('#forecast2').addClass("card col-md-2 ml-4, bg-primary text-white");
+            console.log(forecastItem2);
+                var day2 = $('#date2').addClass('h4').text(timeNow.response.list[1]);
+                console.log(day2, 'day2');
+                forecastItem1.append(day1);
+                var icon2 = $("icon2").attr("src", "https://openweathermap.org/img/w/" + response.list[1].weather.icon + ".png");
+                console.log(icon2, 'icon2');
+                forecastItem2.append(icon2);
+                var temp2 = $("#temp2").text("Temperature: " + response.list[1].main.temp + 'F');
+                console.log(temp2, 'temp2');
+                forecastItem2.append(temp2);
+                var humidity2 = $("#humidity2").text('Humidity: ' + response.list[1].main.humidity + '%');
+                console.log(humidity2, 'humidity2');
+                forecastItem1.append(humidity2);
 
     // var forecastItem3 = $('<card>').addClass('card col-md-2 ml-4 bg-primary text-white')
     //     console.log(forecastItem3);
@@ -191,4 +185,5 @@ function fiveForecasts()    {
     //         console.log(humidity5, 'humidity5');
     //         $('#forecasts').append(humidity5);
 
+    // }
 };
