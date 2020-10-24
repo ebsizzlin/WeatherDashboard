@@ -33,8 +33,8 @@ SO THAT I can plan a trip accordingly
 # Screenshots
 
 <img width="1556" alt="Screen Shot 2020-10-23 at 10 59 18 PM" src="https://user-images.githubusercontent.com/70185995/97066434-799a8180-1583-11eb-860c-cb30815532bc.png">
-<img width="1375" alt="Screen Shot 2020-10-23 at 10 59 32 PM" src="https://user-images.githubusercontent.com/70185995/97066437-7bfcdb80-1583-11eb-9272-e551f19b5aea.png">
-<img width="1554" alt="Screen Shot 2020-10-23 at 10 59 45 PM" src="https://user-images.githubusercontent.com/70185995/97066440-7ef7cc00-1583-11eb-8d5d-a78c4d44aaff.png">
+<img width="1679" alt="Screen Shot 2020-10-24 at 1 14 29 PM" src="https://user-images.githubusercontent.com/70185995/97087826-e735c480-15fa-11eb-86a9-6361dbafc2da.png">
+<img width="1676" alt="Screen Shot 2020-10-24 at 1 14 40 PM" src="https://user-images.githubusercontent.com/70185995/97087828-e8ff8800-15fa-11eb-99ce-5f7873dc0d5f.png">
 
 # Link
 
