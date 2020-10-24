@@ -6,6 +6,7 @@ var timeNow = moment().format('M/D/YYYY');
 $('#searchBtn').on('click', function() {
     //onclick button to show everything
     $('#forecastsAll').addClass('show');
+    $('#forecast-cards').addClass('show');
 
     city = $('#searchBox').empty().val().trim().toUpperCase();
 
@@ -44,28 +45,28 @@ function locationWeather(data)  {
     $('#currentCity').empty().append(cardItem);
 
     //date //date
-    var time = $('<h4>').addClass('card-title').text(timeNow);
-    console.log(time, 'time');
+    var time = $('<h4>').addClass('card-title').text('(' + timeNow + ')');
+    console.log('timeNow:', timeNow)
     $(cardItem).append(time);
 
     //pic //icon
-    var img = $("<img>").attr("src", "https://openweathermap.org/img/w/" + data.weather[0].icon + ".png");
-    console.log(img);
-    $('#currentCity').append(img);
+    var img = $("<img>").css('margin-left', '20px').attr("src", "https://openweathermap.org/img/w/" + data.weather[0].icon + ".png");
+    console.log('data.weather[0].icon:', data.weather[0].icon)
+    $(time).append(img);
 
     //temp //temp
-    var temp = $("<p>").addClass('card-text').text("Temperature: " + data.main.temp + 'F');
-    console.log(temp, 'temp');
+    var temp = $("<p>").addClass('card-text').css('margin-left', '20px').text("Temperature: " + data.main.temp + 'F');
+    console.log('data.main.temp:', data.main.temp)
     $('#currentCity').append(temp);
 
     //humidity //humidity
-    var humidity = $("<p>").addClass('card-text').text('Humidity: ' + data.main.humidity + '%');
-    console.log(humidity, 'humidity');
+    var humidity = $("<p>").addClass('card-text').css('margin-left', '20px').text('Humidity: ' + data.main.humidity + '%');
+    console.log('data.main.humidity:', data.main.humidity)
     $('#currentCity').append(humidity);
 
     //wind speed //speed
-    var wind = $("<p>").addClass('card-text').text("Wind Speed: " + data.wind.speed + "MPH");
-    console.log(wind);
+    var wind = $("<p>").addClass('card-text').css('margin-left', '20px').text("Wind Speed: " + data.wind.speed + "MPH");
+    console.log('data.wind.speed:', data.wind.speed)
     $('#currentCity').append(wind);
     
     //uv //value
@@ -79,8 +80,10 @@ function locationWeather(data)  {
         method: 'GET'
     }).then(function(response) {
         // console.log('response:', response)
-        var UV = $("<button>").addClass('btn btn-success').text("UV Index: " + response.value);
-        $('#currentCity').append(UV);
+        var index = $('<p>').addClass('card-text').css('margin-left', '20px').text("UV Index: ");
+        var UV = $("<button>").addClass('btn btn-success').text(response.value);
+        $('#currentCity').append(index);
+        $(index).append(UV);
         //if ... btn btn-success //if ... btn btn-warning //if ... btn btn-danger
         if (response.value <= 2) {
             $(this).addClass("btn btn-success");
@@ -100,90 +103,85 @@ function fiveForecasts()    {
         url: queryURL3,
         method: 'GET'
     }).then(function(response)  {
-    console.log('response:', response)
-    // forecastItem.empty(response);
-    });
+        console.log('response.list[0](LINE103):', response.list[0])    // forecastItem.empty(response);
+        console.log(response, 'response');
 
-    //should i be appending to forecastItem1 instead of #forecasts?
     // for(var i = 0; i < response.length; i++)    {
 
-        var forecastItem1 = $('#forecast1').addClass("card col-md-2 ml-4, bg-primary text-white");
+        var forecastItem1 = $('#forecast1').addClass("bg-primary text-white");
             console.log(forecastItem1);
-                var day1 = $('#date1').addClass('h4').text(timeNow.response.list[0]);
-                console.log(day1, 'day1');
+                var day1 = $('#date1').addClass('h4').text(response.list[3].dt_txt);
+                console.log('response.list[3].dt_txt:', response.list[3].dt_txt)
                 forecastItem1.append(day1);
-                var icon1 = $("icon1").attr("src", "https://openweathermap.org/img/w/" + response.list[0].weather.icon + ".png");
-                console.log(icon1, 'icon1');
+                var icon1 = $("#icon1").attr("src", "https://openweathermap.org/img/w/" + response.list[3].weather.icon + ".png");
+                console.log('response.list[3].weather.icon:', response.list[3].weather.icon)
                 forecastItem1.append(icon1);
-                var temp1 = $("#temp1").text("Temperature: " + response.list[0].main.temp + 'F');
-                console.log(temp1, 'temp1');
+                var temp1 = $("#temp1").text("Temperature: " + response.list[3].main.temp + 'F');
+                console.log('response.list[3].main.temp:', response.list[3].main.temp)
                 forecastItem1.append(temp1);
-                var humidity1 = $("#humidity1").text('Humidity: ' + response.list[0].main.humidity + '%');
-                console.log(humidity1, 'humidity1');
+                var humidity1 = $("#humidity1").text('Humidity: ' + response.list[3].main.humidity + '%');
+                console.log('response.list[3].main.humidity:', response.list[3].main.humidity)
                 forecastItem1.append(humidity1);
 
-        var forecastItem2 = $('#forecast2').addClass("card col-md-2 ml-4, bg-primary text-white");
+        var forecastItem2 = $('#forecast2').addClass("bg-primary text-white");
             console.log(forecastItem2);
-                var day2 = $('#date2').addClass('h4').text(timeNow.response.list[1]);
-                console.log(day2, 'day2');
-                forecastItem1.append(day1);
-                var icon2 = $("icon2").attr("src", "https://openweathermap.org/img/w/" + response.list[1].weather.icon + ".png");
-                console.log(icon2, 'icon2');
+                var day2 = $('#date2').addClass('h4').text(response.list[11].dt_txt);
+                console.log('response.list[11].dt_txt:', response.list[11].dt_txt)
+                forecastItem2.append(day2);
+                var icon2 = $("#icon2").attr("src", "https://openweathermap.org/img/w/" + response.list[11].weather.icon + ".png");
+                console.log('response.list[11].weather.icon:', response.list[11].weather.icon)
                 forecastItem2.append(icon2);
-                var temp2 = $("#temp2").text("Temperature: " + response.list[1].main.temp + 'F');
-                console.log(temp2, 'temp2');
+                var temp2 = $("#temp2").text("Temperature: " + response.list[11].main.temp + 'F');
+                console.log('response.list[11].main.temp:', response.list[11].main.temp)
                 forecastItem2.append(temp2);
-                var humidity2 = $("#humidity2").text('Humidity: ' + response.list[1].main.humidity + '%');
-                console.log(humidity2, 'humidity2');
-                forecastItem1.append(humidity2);
+                var humidity2 = $("#humidity2").text('Humidity: ' + response.list[11].main.humidity + '%');
+                console.log('response.list[11].main.humidity:', response.list[11].main.humidity)
+                forecastItem2.append(humidity2);
 
-    // var forecastItem3 = $('<card>').addClass('card col-md-2 ml-4 bg-primary text-white')
-    //     console.log(forecastItem3);
-    //     $('#forecasts').append(forecastItem3);
-    //         var day3 = $('<card-title>').addClass('h4').text(list[2].dt_txt);
-    //         console.log(day3, 'day3');
-    //         $('#forecasts').append(day3);
-    //         var icon3 = $("<img>").attr("src", "https://openweathermap.org/img/w/" + list[2].weather.icon + ".png");
-    //         console.log(icon3, 'icon3');
-    //         $('#forecasts').append(icon3);
-    //         var temp3 = $("<p>").addClass('card-text').text("Temperature: " + list[2].main.temp + 'F');
-    //         console.log(temp3, 'temp3');
-    //         $('#forecasts').append(temp3);
-    //         var humidity3 = $("<p>").addClass('card-text').text('Humidity: ' + list[2].main.humidity + '%');
-    //         console.log(humidity3, 'humidity3');
-    //         $('#forecasts').append(humidity3);
+        var forecastItem3 = $('#forecast3').addClass("bg-primary text-white");
+            console.log(forecastItem3);
+                var day3 = $('#date3').addClass('h4').text(response.list[19].dt_txt);
+                console.log('response.list[19].dt_txt:', response.list[19].dt_txt)
+                forecastItem3.append(day3);
+                var icon3 = $("#icon2").attr("src", "https://openweathermap.org/img/w/" + response.list[19].weather.icon + ".png");
+                console.log('response.list[19].weather.icon:', response.list[19].weather.icon)
+                forecastItem3.append(icon3);
+                var temp3 = $("#temp3").text("Temperature: " + response.list[19].main.temp + 'F');
+                console.log('response.list[19].main.temp:', response.list[19].main.temp)
+                forecastItem3.append(temp3);
+                var humidity3 = $("#humidity3").text('Humidity: ' + response.list[19].main.humidity + '%');
+                console.log('response.list[19].main.humidity:', response.list[19].main.humidity)
+                forecastItem3.append(humidity3);
 
-    // var forecastItem4 = $('<card>').addClass('card col-md-2 ml-4 bg-primary text-white')
-    //     console.log(forecastItem4);
-    //     $('#forecasts').append(forecastItem4);
-    //         var day4 = $('<card-title>').addClass('h4').text(list[3].dt_txt);
-    //         console.log(day4, 'day4');
-    //         $('#forecasts').append(day4);
-    //         var icon4 = $("<img>").attr("src", "https://openweathermap.org/img/w/" + list[3].weather.icon + ".png");
-    //         console.log(icon4, 'icon4');
-    //         $('#forecasts').append(icon4);
-    //         var temp4 = $("<p>").addClass('card-text').text("Temperature: " + list[3].main.temp + 'F');
-    //         console.log(temp4, 'temp4');
-    //         $('#forecasts').append(temp4);
-    //         var humidity4 = $("<p>").addClass('card-text').text('Humidity: ' + list[3].main.humidity + '%');
-    //         console.log(humidity4, 'humidity4');
-    //         $('#forecasts').append(humidity4);
+        var forecastItem4 = $('#forecast4').addClass("bg-primary text-white");
+            console.log(forecastItem4);
+                var day4 = $('#date4').addClass('h4').text(response.list[27].dt_txt);
+                console.log('response.list[27].dt_txt:', response.list[27].dt_txt)
+                forecastItem4.append(day4);
+                var icon4 = $("#icon4").attr("src", "https://openweathermap.org/img/w/" + response.list[27].weather.icon + ".png");
+                console.log('response.list[27].weather.icon:', response.list[27].weather.icon)
+                forecastItem4.append(icon4);
+                var temp4 = $("#temp4").text("Temperature: " + response.list[27].main.temp + 'F');
+                console.log('response.list[27].main.temp:', response.list[27].main.temp)
+                forecastItem4.append(temp4);
+                var humidity4 = $("#humidity4").text('Humidity: ' + response.list[27].main.humidity + '%');
+                console.log('response.list[27].main.humidity:', response.list[27].main.humidity)
+                forecastItem4.append(humidity4);
 
-    // var forecastItem5 = $('<card>').addClass('card col-md-2 ml-4 bg-primary text-white')
-    //     console.log(forecastItem5);
-    //     $('#forecasts').append(forecastItem5);
-    //         var day5 = $('<card-title>').addClass('h4').text(list[4].dt_txt);
-    //         console.log(day5, 'day5');
-    //         $('#forecasts').append(day5);
-    //         var icon5 = $("<img>").attr("src", "https://openweathermap.org/img/w/" + list[4].weather.icon + ".png");
-    //         console.log(icon5, 'icon5');
-    //         $('#forecasts').append(icon5);
-    //         var temp5 = $("<p>").addClass('card-text').text("Temperature: " + list[4].main.temp + 'F');
-    //         console.log(temp5, 'temp5');
-    //         $('#forecasts').append(temp5);
-    //         var humidity5 = $("<p>").addClass('card-text').text('Humidity: ' + list[4].main.humidity + '%');
-    //         console.log(humidity5, 'humidity5');
-    //         $('#forecasts').append(humidity5);
-
-    // }
+        var forecastItem5 = $('#forecast5').addClass("bg-primary text-white");
+            console.log(forecastItem4);
+                var day5 = $('#date5').addClass('h4').text(response.list[35].dt_txt);
+                console.log('response.list[35].dt_txt:', response.list[35].dt_txt)
+                forecastItem5.append(day5);
+                var icon5 = $("#icon5").attr("src", "https://openweathermap.org/img/w/" + response.list[35].weather.icon + ".png");
+                console.log('response.list[35].weather.icon:', response.list[35].weather.icon)
+                forecastItem5.append(icon5);
+                var temp5 = $("#temp5").text("Temperature: " + response.list[35].main.temp + 'F');
+                console.log('response.list[35].main.temp:', response.list[35].main.temp)
+                forecastItem5.append(temp5);
+                var humidity5 = $("#humidity5").text('Humidity: ' + response.list[35].main.humidity + '%');
+                console.log('response.list[35].main.humidity:', response.list[35].main.humidity)
+                forecastItem5.append(humidity5);
+        // }
+    });
 };

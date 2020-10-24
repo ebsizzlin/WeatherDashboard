@@ -11,15 +11,15 @@ body {
 
 #currentCity {
   padding: 20px;
+  border-radius: 3px black;
 }
 
-#forecasts {
-  display: flex;
-  flex-direction: row;
+.forecasts {
+  margin-left: 20px;
 }
 
-.forecast {
-  margin: 20px;
+.card-deck {
+  margin-left: 20px;
 }
 
 .hide {

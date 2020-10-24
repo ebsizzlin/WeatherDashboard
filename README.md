@@ -15,26 +15,27 @@ SO THAT I can plan a trip accordingly
 # Completed
 
 - weather dashboard, form inputs
-- cityList function (local storage, search display, API response)
-- locationWeather function (empty, append, correctly drawing from network, current conditions API response)
+- searching for city: cityList function (local storage, search display, API response)
+- current conditions: locationWeather function (empty, append, correctly drawing from network, current conditions API response)
+- future conditions: 5 day forecast API response in network & displayed
 - 4 queryURLs
-- forecastsAll hide & show onclick
-- 5 day forecast API response in network (though not yet displayed properly)
-- for loop attempt
-- button color change attempt
+- hide & show onclick
+- UV button
+- moment.js
 
-# Future Fixes
+# Future Additions
 
+- moment.js for forecasts
 - temperature # doesn't make sense
-- how to change button color depending on favorable, moderate, severe (if statements for green yellow red?)
-- make locationWeather a card / a nice border
-- figure out the for loop / why 'response' is undefined
-- change searches to buttons that can be clicked on & keep them displayed when you reseach (work schedule hw)
+- cant get locationWeather border to show
+- how to change button color depending on favorable, moderate, severe
+- bonus: change searches to buttons that can be clicked on & keep them displayed when you reseach (work schedule hw?)
 
 # Screenshots
 
-<img width="1243" alt="Screen Shot 2020-10-23 at 1 49 05 AM" src="https://user-images.githubusercontent.com/70185995/96961139-0edd3d80-14d2-11eb-9083-6c78b5b8ae5d.png">
-<img width="1248" alt="Screen Shot 2020-10-23 at 1 49 17 AM" src="https://user-images.githubusercontent.com/70185995/96961148-113f9780-14d2-11eb-83d2-654fd5735192.png">
+<img width="1556" alt="Screen Shot 2020-10-23 at 10 59 18 PM" src="https://user-images.githubusercontent.com/70185995/97066434-799a8180-1583-11eb-860c-cb30815532bc.png">
+<img width="1375" alt="Screen Shot 2020-10-23 at 10 59 32 PM" src="https://user-images.githubusercontent.com/70185995/97066437-7bfcdb80-1583-11eb-9272-e551f19b5aea.png">
+<img width="1554" alt="Screen Shot 2020-10-23 at 10 59 45 PM" src="https://user-images.githubusercontent.com/70185995/97066440-7ef7cc00-1583-11eb-8d5d-a78c4d44aaff.png">
 
 # Link
 
