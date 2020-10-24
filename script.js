@@ -84,7 +84,7 @@ function locationWeather(data)  {
         //if ... btn btn-success //if ... btn btn-warning //if ... btn btn-danger
         if (response.value <= 2) {
             $(this).addClass("btn btn-success");
-          } else if (response.value >= 3 || response.value <= 7) {
+          } else if (response.value >= 3 && response.value <= 7) {
             $(this).addClass("btn btn-warning");
           } else if (response.value >= 8) {
             $(this).addClass("btn btn-danger");
@@ -105,23 +105,27 @@ function fiveForecasts()    {
     });
 
     //should i be appending to forecastItem1 instead of #forecasts?
-    for(var i = 0; i < response.length; i++)    {
-        var forecastItem1 = $('<card>').addClass('card col-md-2 ml-4 bg-primary text-white')
+    // for(var i = 0; i < response.length; i++)    {
+        $(".card").attr(
+            "style",
+            "background-color:dodgerblue; color:white"
+          );
+
+        var forecastItem1 = $('#forecast1');
             console.log(forecastItem1);
-            $('#forecasts').append(forecastItem1);
-                var day1 = $('<card-title>').addClass('h4').text(timeNow.add(1, 'days'));
+                var day1 = $('#date1').addClass('h4').text(timeNow.response.list[0]);
                 console.log(day1, 'day1');
-                $('#forecasts').append(day1);
-                var icon1 = $("<img>").attr("src", "https://openweathermap.org/img/w/" + list[0].weather.icon + ".png");
+                forecastItem1.append(day1);
+                var icon1 = $("icon1").attr("src", "https://openweathermap.org/img/w/" + response.list[0].weather.icon + ".png");
                 console.log(icon1, 'icon1');
-                $('#forecasts').append(icon1);
-                var temp1 = $("<p>").addClass('card-text').text("Temperature: " + list[0].main.temp + 'F');
+                forecastItem1.append(icon1);
+                var temp1 = $("#temp1").text("Temperature: " + response.list[0].main.temp + 'F');
                 console.log(temp1, 'temp1');
-                $('#forecasts').append(temp1);
-                var humidity1 = $("<p>").addClass('card-text').text('Humidity: ' + list[0].main.humidity + '%');
+                forecastItem1.append(temp1);
+                var humidity1 = $("#humidity1").text('Humidity: ' + response.list[0].main.humidity + '%');
                 console.log(humidity1, 'humidity1');
-                $('#forecasts').append(humidity1);
-    }
+                forecastItem1.append(humidity1);
+    // }
 
     // var forecastItem2 = $('<card>').addClass('card col-md-2 ml-4 bg-primary text-white')
     //     console.log(forecastItem2);
