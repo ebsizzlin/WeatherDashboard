@@ -22,14 +22,14 @@ SO THAT I can plan a trip accordingly
 - hide & show onclick
 - UV button
 - moment.js
+- math.floor calculations work
 
 # Future Additions
 
-- moment.js for forecasts
-- temperature # doesn't make sense
 - how to change button color depending on favorable, moderate, severe
 - spread 5 forecast cards out even with the current city box
 
+- bonus: refresh and it shows last searched
 - bonus: change searches to buttons that can be clicked on & keep them displayed when you reseach (work schedule hw?)
 
 # Screenshots
