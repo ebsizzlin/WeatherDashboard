@@ -25,6 +25,7 @@ SO THAT I can plan a trip accordingly
 # Future Additions
 
 - how to change button color depending on favorable, moderate, severe
+- 5 day icons not showing
 
 - bonus: enter button search
 - bonus: refresh and it shows last searched
