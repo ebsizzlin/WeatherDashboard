@@ -84,18 +84,24 @@ function locationWeather(data)  {
         url: queryURL2,
         method: 'GET'
     }).then(function(response) {
-        // console.log('response:', response)
+        console.log('response:', response)
         var index = $('<p>').addClass('card-text').css('margin-left', '20px').text("UV Index: ");
         var UV = $("<button>").addClass('btn btn-success').text(response.value);
         $('#currentCity').append(index);
         $(index).append(UV);
         //if ... btn btn-success //if ... btn btn-warning //if ... btn btn-danger
-        if (response.value <= 2) {
+        if (UV <= 2) {
             $(this).addClass("btn btn-success");
-          } else if (response.value >= 3 && response.value <= 7) {
+            $(this).removeClass("btn btn-warning");
+            $(this).removeClass("btn btn-danger");
+          } else if (UV >= 3 && UV <= 7) {
             $(this).addClass("btn btn-warning");
-          } else if (response.value >= 8) {
+            $(this).removeClass("btn btn-success");
+            $(this).removeClass("btn btn-danger");
+          } else if (UV >= 8) {
             $(this).addClass("btn btn-danger");
+            $(this).removeClass("btn btn-success");
+            $(this).removeClass("btn btn-warning");
           }
     });
 };
@@ -108,8 +114,8 @@ function fiveForecasts()    {
         url: queryURL3,
         method: 'GET'
     }).then(function(response)  {
-        console.log('response.list[0](LINE103):', response.list[0])    // forecastItem.empty(response);
-        console.log(response, 'response');
+        //console.log('response.list[0](LINE103):', response.list[0])    // forecastItem.empty(response);
+        //console.log(response, 'response');
 
         var forecastItem1 = $('#forecast1').addClass("bg-primary text-white");
             console.log(forecastItem1);
