@@ -167,7 +167,7 @@ function fiveForecasts()    {
                     console.log('response.list[19].dt_txt:', response.list[19].dt_txt)
                     forecastItem3.append(day3);
                 //icon
-                var icon3 = $("#icon2").attr("src", "https://openweathermap.org/img/w/" + response.list[19].weather[0].icon + ".png");
+                var icon3 = $("#icon3").attr("src", "https://openweathermap.org/img/w/" + response.list[19].weather[0].icon + ".png");
                     console.log('response.list[19].weather[0].icon:', response.list[19].weather[0].icon)
                     forecastItem3.append(icon3);
                 //temp

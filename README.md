@@ -21,11 +21,9 @@ SO THAT I can plan a trip accordingly
 - UV button
 - moment.js
 - math.floor calculations work
+- buttons change color depending on favorable, moderate, severe
 
 # Future Additions
-
-- how to change button color depending on favorable, moderate, severe
-- 5 day icons not showing
 
 - bonus: enter button search
 - bonus: refresh and it shows last searched
