@@ -84,25 +84,26 @@ function locationWeather(data)  {
         url: queryURL2,
         method: 'GET'
     }).then(function(response) {
-        console.log('response:', response)
+        console.log('UV response:', response)
+        var UVindex = response.value;
         var index = $('<p>').addClass('card-text').css('margin-left', '20px').text("UV Index: ");
-        var UV = $("<button>").addClass('btn btn-success').text(response.value);
+        var UV = $("<button>").addClass('btn btn-success').text(UVindex);
         $('#currentCity').append(index);
-        $(index).append(UV);
         //if ... btn btn-success //if ... btn btn-warning //if ... btn btn-danger
-        if (UV <= 2) {
-            $(this).addClass("btn btn-success");
-            $(this).removeClass("btn btn-warning");
-            $(this).removeClass("btn btn-danger");
-          } else if (UV >= 3 && UV <= 7) {
-            $(this).addClass("btn btn-warning");
-            $(this).removeClass("btn btn-success");
-            $(this).removeClass("btn btn-danger");
-          } else if (UV >= 8) {
-            $(this).addClass("btn btn-danger");
-            $(this).removeClass("btn btn-success");
-            $(this).removeClass("btn btn-warning");
-          }
+        if (UVindex <= 2) {
+            UV.addClass("btn btn-success");
+            UV.removeClass("btn btn-warning");
+            UV.removeClass("btn btn-danger");
+        } else if (UVindex >= 3 && UVindex <= 7) {
+            UV.addClass("btn btn-warning");
+            UV.removeClass("btn btn-success");
+            UV.removeClass("btn btn-danger");
+        } else if (UVindex >= 8) {
+            UV.addClass("btn btn-danger");
+            UV.removeClass("btn btn-success");
+            UV.removeClass("btn btn-warning");
+        }
+        $(index).append(UV);
     });
 };
       
