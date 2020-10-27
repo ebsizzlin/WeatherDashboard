@@ -75,7 +75,7 @@ function locationWeather(data)  {
         url: queryURL2,
         method: 'GET'
     }).then(function(response) {
-        var UVindex = response.value;
+        var UVindex = response.value; //added variable for response.value so there's something to call instead of using "this" because "this" had no element to reference in if statements
         var index = $('<p>').addClass('card-text').css('margin-left', '20px').text("UV Index: ");
         var UV = $("<button>").addClass('btn btn-success').text(UVindex);
         $('#currentCity').append(index);
