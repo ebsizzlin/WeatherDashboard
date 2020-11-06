@@ -1,6 +1,6 @@
 # Weather Dashboard
 
-A weather dashboard that will runs in the browser and save search history with dynamically updated HTML and CSS. Uses the OpenWeather API to retrieve weather data for cities.
+A weather dashboard that will runs in the browser and save search history with dynamically updated HTML and CSS. Provides current weather and five day forecast. Uses the OpenWeather API to retrieve weather data for cities.
 https://ebsizzlin.github.io/WeatherDashboard/
 
 # Tech Used
